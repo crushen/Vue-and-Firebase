@@ -8,6 +8,7 @@
           :exchanges="exchanges" />
       </div>
     </section>
+    <button @click="$store.dispatch('test')" class="button is-primary">Text Vuex</button>
     <pagination />
   </div>
 </template>
