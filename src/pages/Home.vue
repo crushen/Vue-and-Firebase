@@ -1,8 +1,5 @@
 <template>
   <div>
-    <app-header 
-      :brandName="brandName" 
-      :menuItems="menuItems"/>
     <hero />
     <section class="posts">
       <div class="container">
@@ -16,7 +13,6 @@
 </template>
 
 <script>
-import AppHeader from '@/components/Header';
 import Hero from '@/components/Hero';
 import Pagination from '@/components/Pagination';
 import ExchangeList from '@/components/exchange/ExchangeList';
@@ -49,23 +45,14 @@ const exchanges = [{
 }]
 
 export default {
-  name: 'app',
+  name: 'home',
   components: {
-    AppHeader,
     Hero,
     Pagination,
     ExchangeList
   },
   data() {
     return {
-      brandName: 'Exchangario',
-      menuItems: [
-        { text: 'Home', link: '/' },
-        { text: 'About', link: '/about' },
-        { text: 'FAQ', link: '/faq' },
-        { text: 'Login', link: '/login' },
-        { text: 'Register', link: '/register' },
-      ],
       exchanges: exchanges
     }
   }
