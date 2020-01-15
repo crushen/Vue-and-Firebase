@@ -13,7 +13,6 @@
               <input class="input is-large"
                      type="email"
                      placeholder="Your Email"
-                     autofocus=""
                      autocomplete="email">
               <!-- <div class="form-error">
                 <span class="help is-danger">Email is required</span>
@@ -32,7 +31,8 @@
               </div> -->
             </div>
           </div>
-          <button class="button is-block is-info is-large is-fullwidth">Sign In</button>
+          <button @click="handleLogin"
+                  class="button is-block is-info is-large is-fullwidth">Sign In</button>
         </form>
       </div>
       <p class="has-text-grey">
@@ -43,6 +43,16 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    handleLogin() {
+      alert('Login!')
+    }
+  }
+}
+</script>
 
 <style scoped>
   .hero.is-success {

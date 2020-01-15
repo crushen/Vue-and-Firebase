@@ -68,7 +68,7 @@
               </div> -->
             </div>
           </div>
-          <button @click="handleLogin"
+          <button @click="handleRegister"
                   type="button"
                   class="button is-block is-info is-large is-fullwidth">Sign In</button>
         </form>
@@ -96,8 +96,8 @@ export default {
     }
   },
   methods: {
-    handleLogin() {
-      alert(JSON.stringify(this.form))
+    handleRegister() {
+      this.$store.dispatch('auth/signUp', this.form)
     }
   }
 }
