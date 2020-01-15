@@ -18,11 +18,11 @@
         </div>
         <div id="navbar-menu" class="navbar-menu">
           <div class="navbar-end">
-            <a 
+            <router-link 
               v-for="item in menuItems" 
               :key="item.text"
-              :href="item.link"
-              class="navbar-item nav-home">{{ item.text }}</a>
+              :to="item.link"
+              class="navbar-item nav-home">{{ item.text }}</router-link>
           </div>
         </div>
       </div>
