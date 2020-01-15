@@ -4,7 +4,7 @@
       <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item has-text-white is-size-2 has-text-weight-bold" href="#">
-            Your App
+            {{ brandName }}
           </a>
           <span role="button" tabindex="0" class="navbar-burger burger has-text-white" data-target="navbar-menu">
             <span></span>
@@ -14,12 +14,11 @@
         </div>
         <div id="navbar-menu" class="navbar-menu">
           <div class="navbar-end">
-            <!-- Loop through the navigation items -->
-            <a class="navbar-item nav-home" href="#">Home</a>
-            <a class="navbar-item nav-style-guide" href="#">About</a>
-            <a class="navbar-item nav-features" href="#">FAQ</a>
-            <a class="navbar-item nav-tech" href="#">Login</a>
-            <a class="navbar-item nav-web" href="#">Register</a>
+            <a 
+              v-for="item in menuItems" 
+              :key="item.text"
+              :href="item.link"
+              class="navbar-item nav-home">{{ item.text }}</a>
           </div>
         </div>
       </div>
@@ -29,6 +28,17 @@
 
 <script>
 export default {
-  
+  data() {
+    return {
+      brandName: 'Exchangario',
+      menuItems: [
+        { text: 'Home', link: '/' },
+        { text: 'About', link: '/about' },
+        { text: 'FAQ', link: '/faq' },
+        { text: 'Login', link: '/login' },
+        { text: 'Register', link: '/register' },
+      ]
+    }
+  }
 }
 </script>
