@@ -11,7 +11,9 @@
             alt="">
           </figure>
           <div class="item-featured">
-            Icon
+            <div class="exchange-icon">
+              <font-awesome-icon icon="star" />
+            </div>
           </div>
         </a>
         <div class="item-tags">
@@ -45,3 +47,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.exchange-icon {
+  height: 25px;
+  width: 25px;
+  color: #FFBC8C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
