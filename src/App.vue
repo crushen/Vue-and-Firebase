@@ -1,6 +1,8 @@
 <template>
   <div>
-    <app-header/>
+    <app-header 
+      :brandName="brandName" 
+      :menuItems="menuItems"/>
     <hero />
     <section class="posts">
       <div class="container">
@@ -25,6 +27,18 @@ export default {
     Hero,
     Pagination,
     ExchangeList
+  },
+  data() {
+    return {
+      brandName: 'Exchangario',
+      menuItems: [
+        { text: 'Home', link: '/' },
+        { text: 'About', link: '/about' },
+        { text: 'FAQ', link: '/faq' },
+        { text: 'Login', link: '/login' },
+        { text: 'Register', link: '/register' },
+      ]
+    }
   }
 }
 </script>

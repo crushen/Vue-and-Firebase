@@ -28,17 +28,10 @@
 
 <script>
 export default {
-  data() {
-    return {
-      brandName: 'Exchangario',
-      menuItems: [
-        { text: 'Home', link: '/' },
-        { text: 'About', link: '/about' },
-        { text: 'FAQ', link: '/faq' },
-        { text: 'Login', link: '/login' },
-        { text: 'Register', link: '/register' },
-      ]
-    }
+  // props: ['brandName', 'menuItems']
+  props: {
+    brandName: { type: String, required: true },
+    menuItems: { type: Array,  required: true}
   }
 }
 </script>
