@@ -3,13 +3,15 @@ import Vuex from 'vuex'
 import { vuexfireMutations } from 'vuexfire'
 
 import exchange from './modules/exchange'
+import auth from './modules/auth'
 
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
-    exchange
+    exchange,
+    auth
   },
   // state - state of vuex store, you can specify any data here
   state() {
