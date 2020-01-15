@@ -98,6 +98,11 @@ export default {
   methods: {
     handleRegister() {
       this.$store.dispatch('auth/signUp', this.form)
+        .then(user => {
+          alert(user)
+        }).catch(errorMessage => {
+          alert(errorMessage)
+        })
     }
   }
 }

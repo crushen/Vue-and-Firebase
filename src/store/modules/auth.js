@@ -5,10 +5,11 @@ export default {
   actions: {
     signUp(context, {email, password}) {
       return firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then(user => {
-          alert(user)
+        .then(({user}) => {
+          return user
         }).catch(error => {
-          alert(error)
+          const message = error.message
+          return Promise.reject(message);
         })
     }
   }
