@@ -1,9 +1,13 @@
 <template>
   <header class="header">
-    <nav class="navbar">
+    <nav 
+      class="navbar"
+      :class="$route.path === '/' ? '' : 'with-background'">
       <div class="container">
         <div class="navbar-brand">
-          <a class="navbar-item has-text-white is-size-2 has-text-weight-bold" href="#">
+          <a 
+            @click="alertMessage"
+            class="navbar-item has-text-white is-size-2 has-text-weight-bold">
             {{ brandName }}
           </a>
           <span role="button" tabindex="0" class="navbar-burger burger has-text-white" data-target="navbar-menu">
@@ -32,6 +36,11 @@ export default {
   props: {
     brandName: { type: String, required: true },
     menuItems: { type: Array,  required: true}
+  },
+  methods: {
+    alertMessage() {
+      alert(this.$route.path);
+    }
   }
 }
 </script>
