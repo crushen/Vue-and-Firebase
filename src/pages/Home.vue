@@ -26,7 +26,7 @@ export default {
     ExchangeList
   },
   created() {
-    this.$store.dispatch('exchange/getExchanges'); // reference module before action - module/action
+    this.$store.dispatch('exchange/bindExchanges'); // reference module before action - module/action
   },
   computed: {
     exchanges() {

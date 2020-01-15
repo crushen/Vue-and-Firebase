@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { vuexfireMutations } from 'vuexfire'
+
 import exchange from './modules/exchange'
+
 
 Vue.use(Vuex)
 
@@ -27,6 +30,6 @@ export default new Vuex.Store({
   },
   // you will get data and set the data to the state
   mutations: {
-
+    ...vuexfireMutations
   }
 })
