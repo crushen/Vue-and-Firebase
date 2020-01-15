@@ -36,8 +36,8 @@
         </form>
       </div>
       <p class="has-text-grey">
-        <a>Sign In With Google</a>&nbsp;
-        <router-link to="/">Sign Up</router-link> &nbsp;·&nbsp;
+        <a>Sign In With Google</a>&nbsp;·&nbsp;
+        <router-link to="/register">Sign Up</router-link>&nbsp;·&nbsp;
         <a href="../">Need Help?</a>
       </p>
     </div>
