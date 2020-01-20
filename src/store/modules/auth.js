@@ -7,6 +7,7 @@ export default {
     signUp(context, {email, password}) {
       return firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(({user}) => {
+          // TODO: Create profile collection in Firestore
           return user
         }).catch(error => {
           const message = error.message
