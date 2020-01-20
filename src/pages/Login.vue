@@ -1,5 +1,5 @@
 <template>
-  <div class="container has-text-centered">
+  <div class="container has-text-centered base-page">
     <div class="column is-4 is-offset-4">
       <h3 class="title has-text-grey">Login</h3>
       <p class="subtitle has-text-grey">Please login to proceed.</p>
@@ -10,11 +10,12 @@
         <form>
           <div class="field">
             <div class="control">
-              <input v-model="form.email"
-                     class="input is-large"
-                     type="email"
-                     placeholder="Your Email"
-                     autocomplete="email">
+              <input 
+                v-model="form.email"
+                class="input is-large"
+                type="email"
+                placeholder="Your Email"
+                autocomplete="email">
               <!-- <div class="form-error">
                 <span class="help is-danger">Email is required</span>
                 <span class="help is-danger">Email address is not valid</span>
@@ -23,23 +24,26 @@
           </div>
           <div class="field">
             <div class="control">
-              <input v-model="form.password"
-                     class="input is-large"
-                     type="password"
-                     placeholder="Your Password"
-                     autocomplete="current-password">
+              <input 
+                v-model="form.password"
+                class="input is-large"
+                type="password"
+                placeholder="Your Password"
+                autocomplete="current-password">
               <!-- <div class="form-error">
                 <span class="help is-danger">Password is required</span>
               </div> -->
             </div>
           </div>
-          <button @click="handleLogin"
-                  class="button is-block is-info is-large is-fullwidth">Sign In</button>
+          <button 
+            @click="handleLogin"
+            type="button"
+            class="button is-block is-info is-large is-fullwidth">Sign In</button>
         </form>
       </div>
       <p class="has-text-grey">
-        <a>Sign In With Google</a>&nbsp;·&nbsp;
-        <router-link to="/register">Sign Up</router-link>&nbsp;·&nbsp;
+        <a>Sign In With Google</a>&nbsp;
+        <router-link to="/register">Sign Up</router-link> &nbsp;·&nbsp;
         <a href="../">Need Help?</a>
       </p>
     </div>
