@@ -23,11 +23,11 @@ export default {
           return Promise.reject(message);
         })
     },
-    signIn(_, {email, password}) {
+    signIn(context, {email, password}) {
       return firebase.auth().signInWithEmailAndPassword(email, password)
         .catch(error => Promise.reject(error.message))
     },
-    createUserProfile(_, {uid, userProfile}) {
+    createUserProfile(context, {uid, userProfile}) {
       return db
         .collection('profiles')
         .doc(uid)

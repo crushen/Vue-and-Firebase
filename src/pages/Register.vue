@@ -70,7 +70,7 @@
           </div>
           <button @click="handleRegister"
                   type="button"
-                  class="button is-block is-info is-large is-fullwidth">Sign In</button>
+                  class="button is-block is-info is-large is-fullwidth">Sign Up</button>
         </form>
       </div>
       <p class="has-text-grey">
