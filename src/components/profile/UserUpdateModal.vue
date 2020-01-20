@@ -32,7 +32,9 @@
           </form>
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-success">Save changes</button>
+          <button
+            @click="submitModal" 
+            class="button is-success">Save changes</button>
           <button @click="isOpen = false" class="button">Cancel</button>
         </footer>
       </div>
@@ -46,12 +48,21 @@
       userProfile: {
         required: true,
         type: Object
+      },
+      onModalSubmit: {
+        required: true,
+        type: Function
       }
     },
     data () {
       return {
         isOpen: false,
         profileToUpdate: {...this.userProfile}
+      }
+    },
+    methods: {
+      submitModal() {
+        this.onModalSubmit({...this.profileToUpdate});
       }
     }
   }
