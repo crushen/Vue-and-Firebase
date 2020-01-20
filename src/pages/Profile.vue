@@ -6,21 +6,17 @@
           <div class="column is-2">
             <figure class="image  header-icon user-profile-image">
               <!-- TODO: Get user avatar here -->
-              <img class="is-rounded" src="https://placehold.it/225x225"/>
+              <img class="is-rounded" :src="user.profile.avatar"/>
             </figure>
           </div>
           <div class="column is-4-tablet is-10-mobile name">
             <div class="user-info">
               <p>
-                <!-- TODO: Display user name here -->
-                <span class="title is-bold">Some Name</span>
+                <span class="title is-bold">{{ user.profile.fullName }}</span>
                 <br/>
-                <!-- TODO: Here will be user update functionality -->
               </p>
-              <!-- TODO: User info Here if any -->
               <p class="tagline">
-                <!-- {{user.info}} -->
-                Just some info
+                {{ user.profile.info }}
               </p>
             </div>
             <user-update-modal 
@@ -106,8 +102,11 @@ export default {
     }
   },
   methods: {
-    updateProfile(profile) {
+    updateProfile(profile, closeModal) {
       this.$store.dispatch('auth/updateProfile', profile)
+        .then(_ => {
+          closeModal();
+        })
     }
   }
 }

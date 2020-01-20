@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import { db } from '@/db'
@@ -55,13 +56,18 @@ export default {
         .doc(profile.user)
         .update(profile)
         .then(_ => {
-          // Commit changes to store
+          commit('setUserProfile', profile)
+          return true
         })
     }
   },
   mutations: {
     setAuthUser(state, user) {
       state.user = user;
+    },
+    setUserProfile(state, profile) {
+      // state.user.profile = profile
+      Vue.set(state.user, 'profile', profile)
     }
   }
 }

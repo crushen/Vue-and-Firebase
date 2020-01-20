@@ -62,7 +62,9 @@
     },
     methods: {
       submitModal() {
-        this.onModalSubmit({...this.profileToUpdate});
+        this.onModalSubmit({...this.profileToUpdate}, () => {
+          this.isOpen = false;
+        });
       }
     }
   }
