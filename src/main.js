@@ -22,6 +22,7 @@ let app;
 firebase.auth().onAuthStateChanged(user => {
   if(user) {
     store.commit('auth/setAuthUser', user)
+    // TODO: fetch user profile too
   }
   if(!app) {
     app = new Vue({

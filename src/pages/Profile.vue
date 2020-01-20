@@ -23,7 +23,7 @@
                 Just some info
               </p>
             </div>
-            <button class="button is-success">Update Info</button>
+            <user-update-modal :user="user" />
           </div>
           <!-- TODO: Set activeTab variable to 'pending exchanges' and class to 'isActive' when activeTab === 'pending exchanges' -->
           <div class="stats-tab column is-2-tablet is-4-mobile has-text-centered">
@@ -92,6 +92,18 @@
 </template>
 
 <script>
+import UserUpdateModal from '@/components/profile/UserUpdateModal';
+
+export default {
+  components: {
+    UserUpdateModal
+  }, 
+  computed: {
+    user() {
+      return this.$store.state.auth.user;
+    }
+  }
+}
 </script>
 
 <style scoped>
