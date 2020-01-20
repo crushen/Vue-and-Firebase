@@ -19,10 +19,9 @@ Vue.use(Toasted)
 
 let app;
 
-firebase.auth().onAuthStateChanged(user => {
+firebase.auth().onAuthStateChanged(async user => {
   if(user) {
-    store.commit('auth/setAuthUser', user)
-    // TODO: fetch user profile too
+    await store.dispatch('auth/storeAuthUser', user)
   }
   if(!app) {
     app = new Vue({

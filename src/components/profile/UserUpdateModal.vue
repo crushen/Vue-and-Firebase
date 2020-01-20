@@ -14,20 +14,20 @@
         <section class="modal-card-body">
           <form>
             <div class="field">
-              <label class="title">Name</label>
-              <input v-model="user.name" class="input">
+              <label class="title">Full Name</label>
+              <input v-model="profileToUpdate.fullName" class="input">
             </div>
             <div class="field">
               <label class="title">Username</label>
-              <input v-model="user.userName" class="input">
+              <input v-model="profileToUpdate.userName" class="input">
             </div>
             <div class="field">
               <label class="title">Avatar</label>
-              <input v-model="user.avatar" class="input">
+              <input v-model="profileToUpdate.avatar" class="input">
             </div>
             <div class="field">
               <label class="title">Info</label>
-              <input v-model="user.info" class="input">
+              <input v-model="profileToUpdate.info" class="input">
             </div>
           </form>
         </section>
@@ -43,14 +43,15 @@
 <script>
   export default {
     props: {
-      user: {
+      userProfile: {
         required: true,
         type: Object
       }
     },
     data () {
       return {
-        isOpen: false
+        isOpen: false,
+        profileToUpdate: {...this.userProfile}
       }
     }
   }
