@@ -19,9 +19,13 @@ export default {
           // TODO: Create profile collection in Firestore
           return user
         }).catch(error => {
-          const message = error.message
+          const message = error.message;
           return Promise.reject(message);
         })
+    },
+    signIn(_, {email, password}) {
+      return firebase.auth().signInWithEmailAndPassword(email, password)
+        .catch(error => Promise.reject(error.message))
     },
     createUserProfile(_, {uid, userProfile}) {
       return db

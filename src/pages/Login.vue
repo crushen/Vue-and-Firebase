@@ -10,7 +10,8 @@
         <form>
           <div class="field">
             <div class="control">
-              <input class="input is-large"
+              <input v-model="form.email"
+                     class="input is-large"
                      type="email"
                      placeholder="Your Email"
                      autocomplete="email">
@@ -22,7 +23,8 @@
           </div>
           <div class="field">
             <div class="control">
-              <input class="input is-large"
+              <input v-model="form.password"
+                     class="input is-large"
                      type="password"
                      placeholder="Your Password"
                      autocomplete="current-password">
@@ -46,9 +48,19 @@
 
 <script>
 export default {
+  data() {
+    return {
+      form: {
+        email: '',
+        password: ''
+      }
+    }
+  },
   methods: {
     handleLogin() {
-      alert('Login!')
+      this.$store.dispatch('auth/signIn', this.form)
+        .then(_ => this.$router.push('/'))
+        .catch(errorMessage => this.$toasted.error(errorMessage, { duration: 3000 }))
     }
   }
 }
