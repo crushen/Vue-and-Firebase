@@ -41,11 +41,12 @@
               </router-link>
             </template>
             <template v-else>
-              <a 
+              <div
+                @click="handleLogout" 
                 href="#"
                 class="navbar-item nav-home">
                 Logout
-              </a>
+              </div>
             </template>
           </div>
         </div>
@@ -72,6 +73,10 @@ export default {
   methods: {
     alertMessage() {
       alert(this.$route.path);
+    },
+    handleLogout() {
+      this.$toasted.success('You have been logged out!', { duration: 3000 });
+      this.$store.dispatch('auth/signOut');
     }
   }
 }

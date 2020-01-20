@@ -99,15 +99,14 @@ export default {
     handleRegister() {
       this.$store.dispatch('auth/signUp', this.form)
         .then(async user => {
-          await this.$store
-            .dispatch('auth/createUserProfile', {
-              uid: user.uid, 
-              userProfile: {
-                fullName: this.form.fullName,
-                avatar: this.form.avatar,
-                user: user.uid
-              }
-            })
+          await this.$store.dispatch('auth/createUserProfile', {
+            uid: user.uid, 
+            userProfile: {
+              fullName: this.form.fullName,
+              avatar: this.form.avatar,
+              user: user.uid
+            }
+          })
           this.$router.push('/')
         }).catch(errorMessage => {
           this.$toasted.error(errorMessage, { duration: 3000 })

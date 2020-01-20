@@ -27,6 +27,10 @@ export default {
       return firebase.auth().signInWithEmailAndPassword(email, password)
         .catch(error => Promise.reject(error.message))
     },
+    signOut({commit}) {
+      return firebase.auth().signOut()
+        .then(_ => commit('setAuthUser', null))
+    },
     createUserProfile(context, {uid, userProfile}) {
       return db
         .collection('profiles')
