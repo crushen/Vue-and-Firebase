@@ -5,6 +5,7 @@ import AboutPage from '@/pages/About';
 import FaqPage from '@/pages/Faq';
 import LoginPage from '@/pages/Login';
 import RegisterPage from '@/pages/Register';
+import ProfilePage from '@/pages/Profile';
 
 Vue.use(VueRouter)
 
@@ -13,7 +14,8 @@ const routes = [
   { path: '/about', name: 'AboutPage', component: AboutPage },
   { path: '/faq', name: 'FaqPage', component: FaqPage },
   { path: '/login', name: 'LoginPage', component: LoginPage },
-  { path: '/register', name: 'RegisterPage', component: RegisterPage }
+  { path: '/register', name: 'RegisterPage', component: RegisterPage },
+  { path: '/users/me', name: 'ProfilePage', component: ProfilePage }
 ]
 
 const router = new VueRouter({
