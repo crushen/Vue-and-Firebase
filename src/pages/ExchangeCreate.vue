@@ -17,6 +17,7 @@
           <label class="label">Title</label>
           <div class="control">
             <input 
+              @blur="$v.form.title.$touch"
               v-model="form.title"
               class="input" 
               type="text" 
@@ -41,6 +42,7 @@
           <label class="label">Description</label>
           <div class="control">
             <textarea 
+              @blur="$v.form.description.$touch"
               v-model="form.description"
               class="textarea" 
               placeholder="Description" />
@@ -59,6 +61,7 @@
           <label class="label">Image Link</label>
           <div class="control">
             <input 
+              @blur="$v.form.image.$touch"
               v-model="form.image"
               class="input" 
               type="text" 
@@ -83,6 +86,7 @@
           <label class="label">Price</label>
           <div class="control">
             <input 
+              @blur="$v.form.price.$touch"
               v-model="form.price"
               class="input" 
               type="number" 
@@ -107,6 +111,7 @@
           <label class="label">Country</label>
           <div class="control">
             <input 
+              @blur="$v.form.country.$touch"
               v-model="form.country"
               class="input" 
               type="text" 
@@ -126,6 +131,7 @@
           <label class="label">City</label>
           <div class="control">
             <input 
+              @blur="$v.form.city.$touch"
               v-model="form.city"
               class="input" 
               type="text" 
@@ -142,7 +148,22 @@
           </div>
         </div>
 
-        <!-- TODO: Provide tags input -->
+        <div class="field">
+          <label class="label">Tags - separated by a comma or space</label>
+          <div class="control">
+            <input 
+              @input="handleTags"
+              class="input" 
+              type="text" 
+              placeholder="Programming">
+            <div 
+              v-for="(tag, index) in form.tags"
+              :key="index"
+              class="tag is-primary is-medium">
+              {{ tag }}
+            </div>
+          </div>
+        </div>
 
         <div class="field is-grouped">
           <div class="control">
@@ -212,6 +233,13 @@ export default {
       if(!this.$v.form.$invalid) {
         alert(JSON.stringify(this.form));
       }
+    },
+    handleTags(event) {
+      const value = event.target.value;
+      if(value && value.trim().length > 1 && (value.substr(-1) === ',' || value.substr(-1) === ' ')) {
+        this.form.tags.push(value.split(',')[0]);
+        event.target.value = '';
+      }
     }
   }
 }
@@ -222,5 +250,13 @@ export default {
 .form-container {
   max-width: 960px;
   margin: 0 auto;
+}
+
+.tag {
+  margin: 6px 3px;
+}
+
+.tag:first-of-type {
+  margin-left: 0;
 }
 </style>
