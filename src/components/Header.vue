@@ -46,6 +46,11 @@
                 class="navbar-item nav-home">
                 Profile
               </router-link>
+              <router-link 
+                to="/exchanges/new"
+                class="navbar-item nav-home">
+                Create Exchange
+              </router-link>
               <div
                 @click="handleLogout" 
                 href="#"
