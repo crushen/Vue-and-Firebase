@@ -21,6 +21,9 @@
               class="input" 
               type="text" 
               placeholder="Title">
+            <div class="form-error">
+              <span class="help is-danger">Title is required</span>
+            </div>
           </div>
         </div>
         <div class="field">
@@ -30,6 +33,9 @@
               v-model="form.description"
               class="textarea" 
               placeholder="Description" />
+            <div class="form-error">
+              <span class="help is-danger">Description is required</span>
+            </div>
           </div>
         </div>
         <div class="field">
@@ -40,6 +46,9 @@
               class="input" 
               type="text" 
               placeholder="Image Link">
+            <div class="form-error">
+              <span class="help is-danger">Image is required</span>
+            </div>
           </div>
         </div>
         <div class="field">
@@ -50,6 +59,9 @@
               class="input" 
               type="number" 
               placeholder="Price">
+            <div class="form-error">
+              <span class="help is-danger">Price is required</span>
+            </div>
           </div>
         </div>
         <div class="field">
@@ -60,6 +72,9 @@
               class="input" 
               type="text" 
               placeholder="Country">
+            <div class="form-error">
+              <span class="help is-danger">Country is required</span>
+            </div>
           </div>
         </div>
         <div class="field">
@@ -70,6 +85,9 @@
               class="input" 
               type="text" 
               placeholder="City">
+            <div class="form-error">
+              <span class="help is-danger">City is required</span>
+            </div>
           </div>
         </div>
 
@@ -109,8 +127,13 @@ export default {
       }
     }
   },
+  validations: {
+    form: {
+    }
+  },
   methods: {
     createExchange() {
+      
       alert(JSON.stringify(this.form));
     }
   }
