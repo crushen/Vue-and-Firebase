@@ -21,8 +21,19 @@
               class="input" 
               type="text" 
               placeholder="Title">
-            <div class="form-error">
-              <span class="help is-danger">Title is required</span>
+            <div 
+              v-if="$v.form.title.$error"
+              class="form-error">
+              <span 
+                v-if="!$v.form.title.required"
+                class="help is-danger">
+                Title is required
+              </span>
+              <span 
+                v-if="!$v.form.title.minLength"
+                class="help is-danger">
+                Minimum length of title is 10 characters
+              </span>
             </div>
           </div>
         </div>
@@ -33,8 +44,14 @@
               v-model="form.description"
               class="textarea" 
               placeholder="Description" />
-            <div class="form-error">
-              <span class="help is-danger">Description is required</span>
+            <div 
+              v-if="$v.form.description.$error"
+              class="form-error">
+              <span 
+                v-if="!$v.form.description.required"
+                class="help is-danger">
+                Description is required
+              </span>
             </div>
           </div>
         </div>
@@ -46,8 +63,19 @@
               class="input" 
               type="text" 
               placeholder="Image Link">
-            <div class="form-error">
-              <span class="help is-danger">Image is required</span>
+            <div 
+              v-if="$v.form.image.$error"
+              class="form-error">
+              <span 
+                v-if="!$v.form.image.required"
+                class="help is-danger">
+                Image is required
+              </span>
+              <span 
+                v-if="!$v.form.image.url"
+                class="help is-danger">
+                Image URL is not valid
+              </span>
             </div>
           </div>
         </div>
@@ -59,8 +87,14 @@
               class="input" 
               type="number" 
               placeholder="Price">
-            <div class="form-error">
-              <span class="help is-danger">Price is required</span>
+            <div 
+              v-if="$v.form.price.$error"
+              class="form-error">
+              <span 
+                v-if="!$v.form.price.required"
+                class="help is-danger">
+                Price is required
+              </span>
             </div>
           </div>
         </div>
@@ -72,8 +106,14 @@
               class="input" 
               type="text" 
               placeholder="Country">
-            <div class="form-error">
-              <span class="help is-danger">Country is required</span>
+            <div 
+              v-if="$v.form.country.$error"
+              class="form-error">
+              <span  
+                v-if="!$v.form.country.required"
+                class="help is-danger">
+                Country is required
+              </span>
             </div>
           </div>
         </div>
@@ -85,8 +125,14 @@
               class="input" 
               type="text" 
               placeholder="City">
-            <div class="form-error">
-              <span class="help is-danger">City is required</span>
+            <div 
+              v-if="$v.form.city.$error"
+              class="form-error">
+              <span 
+                v-if="!$v.form.city.required"
+                class="help is-danger">
+                City is required
+              </span>
             </div>
           </div>
         </div>
@@ -112,6 +158,8 @@
 </template>
 
 <script>
+import { required, minLength, url } from 'vuelidate/lib/validators';
+
 export default {
   data() {
     return {
@@ -129,12 +177,34 @@ export default {
   },
   validations: {
     form: {
+      title: {
+        required,
+        minLength: minLength(10)
+      },
+      description: {
+        required
+      },
+      image: {
+        required,
+        url
+      },
+      price: {
+        required
+      },
+      country: {
+        required
+      },
+      city: {
+        required
+      }
     }
   },
   methods: {
     createExchange() {
-      
-      alert(JSON.stringify(this.form));
+      this.$v.form.$touch();
+      if(!this.$v.form.$invalid) {
+        alert(JSON.stringify(this.form));
+      }
     }
   }
 }
