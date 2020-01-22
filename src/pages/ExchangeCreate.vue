@@ -67,14 +67,14 @@
               v-if="$v.form.image.$error"
               class="form-error">
               <span 
-                v-if="!$v.form.image.required"
-                class="help is-danger">
-                Image is required
-              </span>
-              <span 
                 v-if="!$v.form.image.url"
                 class="help is-danger">
                 Image URL is not valid
+              </span>
+              <span 
+                v-if="!$v.form.image.supportedFileType"
+                class="help is-danger">
+                Image extension is not supported (must be jpg, png, jpeg, svg)
               </span>
             </div>
           </div>
@@ -94,6 +94,11 @@
                 v-if="!$v.form.price.required"
                 class="help is-danger">
                 Price is required
+              </span>
+              <span 
+                v-if="!$v.form.price.minValue"
+                class="help is-danger">
+                Minimum price is 10
               </span>
             </div>
           </div>
@@ -158,7 +163,8 @@
 </template>
 
 <script>
-import { required, minLength, url } from 'vuelidate/lib/validators';
+import { required, minLength, url, minValue } from 'vuelidate/lib/validators'
+import { supportedFileType } from '@/helpers/validators'
 
 export default {
   data() {
@@ -185,11 +191,12 @@ export default {
         required
       },
       image: {
-        required,
-        url
+        url,
+        supportedFileType
       },
       price: {
-        required
+        required,
+        minValue: minValue(10)
       },
       country: {
         required
