@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="exchange && exchange.id">
     <!-- HEADER -->
     <section
       class="hero is-black">

@@ -29,6 +29,7 @@ export default {
       .get()
       .then(async snapshot => {
         const exchange = snapshot.data();
+        exchange.id = snapshot.id;
         const userSnapshot = await exchange.user.get();
         exchange.user = userSnapshot.data();
         commit('setExchange', exchange);
