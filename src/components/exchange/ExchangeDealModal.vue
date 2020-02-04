@@ -2,7 +2,8 @@
   <div>
     <app-modal 
       :onModalSubmit="submitModal"
-      :modalHeader="modalHeader">
+      modalHeader="Make Exchange Deal"
+      submitText="Confirm">
       <template #openingButton>
         <button
           class="button is-fullwidth is-large is-danger is-outlined m-b-sm">
@@ -11,25 +12,25 @@
       </template>
 
       <div class="deal">
-        <!-- TODO: replace by actual name -->
-        <div class="deal-highlight">Exchange Owner Offer</div>
+        <div class="deal-highlight">{{ exchange.user.fullName }} is offering:</div>
         <div class="deal-wrapper">
-          <!-- TODO: type of an exchange -->
-          <div>Offering service</div>
-          <!-- TODO: title of exchange  -->
-          <div>"Renting book"</div>
+          <div>Offering {{ exchange.type }}</div>
+          <div>{{ exchange.title }}</div>
         </div>
         <div class="deal-highlight">Your Offer</div>
         <div class="counter-offer">
           <div class="field">
             Would you prefer to exchange credit ?
             <label class="checkbox is-large">
-              <input type="checkbox">
+              <input 
+                v-model="isOfferingCredit"
+                type="checkbox">
               Yes
             </label>
           </div>
-          <!-- TODO: provide "disabled" class when user is NOT offering credit -->
-          <div class="field">
+          <div 
+            class="field"
+            :class="!isOfferingCredit ? 'disabled' : '' ">
             <label class="label">How Much Credit ?</label>
             <div class="control">
               <input
@@ -38,14 +39,15 @@
                 placeholder="40">
             </div>
           </div>
-          <!-- TODO: provide "disabled" class when user IS offering credit -->
-          <div class="field">
+          <div 
+            class="field"
+            :class="isOfferingCredit ? 'disabled' : '' ">
             <label class="label">Exchange</label>
             <div class="control">
               <div class="select">
                 <select>
-                  <option value="service">Service</option>
-                  <option value="product">Product</option>
+                  <option value="service">Exchange 1</option>
+                  <option value="product">Exchange 2</option>
                 </select>
               </div>
             </div>
@@ -65,6 +67,10 @@ export default {
     onModalSubmit: {
       required: true,
       type: Function
+    },
+    exchange: {
+      required: true,
+      type: Object
     }
   },
   components: {
@@ -72,7 +78,7 @@ export default {
   },
   data () {
     return {
-      modalHeader: 'Make Exchange Deal'
+      isOfferingCredit: false
     }
   },
   methods: {

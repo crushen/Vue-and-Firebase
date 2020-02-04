@@ -11,7 +11,7 @@
       class="button is-primary is-outlined m-t-sm">
       Open Modal
     </button>
-    
+
     <div :class="['modal', {'is-active': isOpen}]">
       <div class="modal-background"></div>
       <div class="modal-card">
@@ -30,7 +30,7 @@
         <footer class="modal-card-foot">
           <button
             @click="submitModal" 
-            class="button is-success">Save changes</button>
+            class="button is-success">{{ submitText }}</button>
           <button @click="isOpen = false" class="button">Cancel</button>
         </footer>
       </div>
@@ -49,6 +49,11 @@
         required: true,
         type: String,
         default: 'Confirmation'
+      },
+      submitText: {
+        required: true,
+        type: String,
+        default: 'Save Changes'
       }
     },
     data () {
