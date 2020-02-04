@@ -1,6 +1,15 @@
 <template>
   <div>
-    <app-modal :onModalSubmit="submitModal">
+    <app-modal 
+      :onModalSubmit="submitModal"
+      :modalHeader="modalHeader">
+      <template #openingButton>
+        <button
+          class="button is-primary is-outlined m-t-sm">
+          Update profile
+        </button>
+      </template>
+
       <form>
         <div class="field">
           <label class="title">Full Name</label>
@@ -42,6 +51,7 @@ export default {
   },
   data () {
     return {
+      modalHeader: 'Update Profile',
       profileToUpdate: {...this.userProfile}
     }
   },

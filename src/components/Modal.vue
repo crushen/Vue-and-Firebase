@@ -1,11 +1,22 @@
 <template>
   <div>
-    <button @click="isOpen = !isOpen" class="button is-primary is-outlined m-t-sm">Update Info</button>
+    <div 
+      v-if="$slots.openingButton"
+      @click="isOpen = !isOpen">
+      <slot name="openingButton" />
+    </div>
+    <button 
+      v-else
+      @click="isOpen = !isOpen" 
+      class="button is-primary is-outlined m-t-sm">
+      Open Modal
+    </button>
+    
     <div :class="['modal', {'is-active': isOpen}]">
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">User Profile</p>
+          <p class="modal-card-title">{{ modalHeader }}</p>
           <button
             @click="isOpen = false"
             class="delete"
@@ -33,6 +44,11 @@
       onModalSubmit: {
         required: true,
         type: Function
+      },
+      modalHeader: {
+        required: true,
+        type: String,
+        default: 'Confirmation'
       }
     },
     data () {
