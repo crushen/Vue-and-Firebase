@@ -23,11 +23,14 @@ export default {
       //commit('setExchanges', exchanges);
     },
     getExchangeById({commit}, exchangeId) {
+      commit('setExchange', {});
       return db.collection('exchanges')
       .doc(exchangeId)
       .get()
-      .then(snapshot => {
+      .then(async snapshot => {
         const exchange = snapshot.data();
+        const userSnapshot = await exchange.user.get();
+        exchange.user = userSnapshot.data();
         commit('setExchange', exchange);
         return exchange;
       })
