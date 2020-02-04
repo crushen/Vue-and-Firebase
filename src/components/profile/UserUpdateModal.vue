@@ -2,7 +2,8 @@
   <div>
     <app-modal 
       :onModalSubmit="submitModal"
-      modalHeader="Update Profile">
+      modalHeader="Update Profile"
+      submitText="Confirm">
       <template #openingButton>
         <button
           class="button is-primary is-outlined m-t-sm">
