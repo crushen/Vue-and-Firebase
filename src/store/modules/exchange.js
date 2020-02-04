@@ -9,7 +9,7 @@ export default {
     }
   },
   actions: {
-    getExchanges({commit}) {
+    getExchanges() {
       // Make a call to Firebase and ask for data
       db.collection('exchanges')
         .doc('od8mMgfC0h5ncg1eobGE')
