@@ -46,7 +46,12 @@ export default {
       const userRef = db.collection('profiles').doc(context.rootState.auth.user.uid);
       exchange.user = userRef;
       // TODO: After exchange is created, add exchange to user profile on Firestore and locally in Vue store
-      return db.collection('exchanges').add(exchange);
+      return db.collection('exchanges')
+        .add(exchange)
+        .then(docRef => {
+          context.commit('auth/addExchangeToUser', docRef.id, {root: true})
+          return true
+        })
     }
   },
   mutations: {
