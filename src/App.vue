@@ -3,9 +3,7 @@
     <app-header 
       :brandName="brandName" 
       :menuItems="menuItems"/>
-    <div :class="$route.path === '/' ? '' : 'page-wrapper' ">
-      <router-view />
-    </div>
+    <router-view />
   </div>
 </template>
 

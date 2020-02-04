@@ -5,7 +5,8 @@ export default {
   namespaced: true,
   state() {
     return {
-      items: []
+      items: [],
+      item: {}
     }
   },
   actions: {
@@ -20,6 +21,16 @@ export default {
         })
 
       //commit('setExchanges', exchanges);
+    },
+    getExchangeById({commit}, exchangeId) {
+      return db.collection('exchanges')
+      .doc(exchangeId)
+      .get()
+      .then(snapshot => {
+        const exchange = snapshot.data();
+        commit('setExchange', exchange);
+        return exchange;
+      })
     },
     bindExchanges: firestoreAction(({ bindFirestoreRef }) => {
       // return the promise returned by `bindFirestoreRef`
@@ -37,6 +48,9 @@ export default {
   mutations: {
     setExchanges(state, exchanges) {
       state.items = exchanges;
+    },
+    setExchange(state, exchange) {
+      state.item = exchange;
     }
   }
 }
