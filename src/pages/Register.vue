@@ -165,7 +165,8 @@ export default {
             userProfile: {
               fullName: this.form.fullName,
               avatar: this.form.avatar,
-              user: user.uid
+              user: user.uid,
+              exchanges: []
             }
           })
           this.$router.push('/')
