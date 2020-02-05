@@ -48,7 +48,8 @@ export default {
       return db.collection('exchanges')
         .add(exchange)
         .then(docRef => {
-          context.commit('auth/addExchangeToUser', docRef.id, {root: true})
+          exchange.id = docRef.id
+          context.commit('auth/addExchangeToUser', exchange, {root: true})
           return true
         })
     }
