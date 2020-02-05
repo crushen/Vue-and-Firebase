@@ -34,6 +34,7 @@
             <label class="label">How Much Credit ?</label>
             <div class="control">
               <input
+                v-model="selectedCredit"
                 class="input"
                 type="number"
                 placeholder="40">
@@ -45,13 +46,18 @@
             <label class="label">Exchange</label>
             <div class="control">
               <div class="select">
-                <select>
-                  <option value="service">Exchange 1</option>
-                  <option value="product">Exchange 2</option>
+                <select v-model="selectedExchange">
+                  <option 
+                    v-for="exchange in offeredExchanges"
+                    :key="exchange.id"
+                    :value="exchange">
+                    {{ exchange.title }}
+                  </option>
                 </select>
               </div>
             </div>
           </div>
+          {{ offeredPrice }}
         </div>
       </div>
 
@@ -71,6 +77,10 @@ export default {
     exchange: {
       required: true,
       type: Object
+    },
+    offeredExchanges: {
+      required: true,
+      type: Array
     }
   },
   components: {
@@ -78,7 +88,17 @@ export default {
   },
   data () {
     return {
-      isOfferingCredit: false
+      isOfferingCredit: false,
+      selectedExchange: null,
+      selectedCredit: null
+    }
+  },
+  computed: {
+    offeredPrice() {
+      if(this.isOfferingCredit) {
+        return this.selectedCredit;
+      }
+      return this.selectedExchange && this.selectedExchange.price;
     }
   },
   methods: {
