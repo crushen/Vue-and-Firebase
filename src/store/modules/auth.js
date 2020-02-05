@@ -70,7 +70,7 @@ export default {
       Vue.set(state.user, 'profile', profile)
     },
     addExchangeToUser(state, exchangeId) {
-      state.user.profile.exchanges.push(exchangeId);
+      state.user.profile.exchanges.push(exchangeId)
     }
   }
 }
